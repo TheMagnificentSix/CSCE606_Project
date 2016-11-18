@@ -196,13 +196,13 @@
               .row
                 .col-md-3
                   .form-group
-                    =f.label :contact_date
+                    %label.control-label contact_date
                     %input#contact1.form-control{name:"contact_date", type:"text"}
                   .form-group
-                    =f.label :followup_date
+                    %label.control-label followup_date
                     %input#contact2.form-control{name:"followup_date", type:"text"}
                 .col-md-9
-                  =f.label :narrative
+                  %label.control-label narrative
                   %textarea#contact3.form-control{name:"narrative", rows:"5"}
         .form-group
           .row

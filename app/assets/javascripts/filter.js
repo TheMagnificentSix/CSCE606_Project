@@ -142,6 +142,19 @@ var Filworker = {
 							      +'<option value="last_modified_by">Last Modified by (Person)</option>'
 							      +'<option value="created_at">Created at (Date)</option>'
 							      +'<option value="last_modified_at">Last Modified at (Date)</option>'
+							      +'<option value="street_address_2">street_address_2</option>'
+							      +'<option value="cell_phone">cell_phone</option>'
+							      +'<option value="subscribeflag">Subscribed?</option>'
+							      +'<option value="secondary_email">secondary_email</option>'
+							      +'<option value="secondary_street_address">secondary_street_address</option>'
+							      +'<option value="secondary_street_address_2">secondary_street_address_2</option>'
+							      +'<option value="secondary_city">secondary_city</option>'
+							      +'<option value="secondary_state">secondary_state</option>'
+							      +'<option value="secondary_country">secondary_country</option>'
+							      +'<option value="secondary_zipcode">secondary_zipcode</option>'
+							      +'<option value="secondary_home_phone">secondary_home_phone</option>'
+							      +'<option value="secondary_business_phone">secondary_business_phone</option>'
+							      +'<option value="secondary_cell_phone">secondary_cell_phone</option>'
 							      +'<option value="active">Active</option>')
 							.selectpicker('refresh');
 		        break;
