@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110031558) do
+ActiveRecord::Schema.define(version: 20161025202248) do
 
   create_table "accesses", force: :cascade do |t|
     t.string   "email"
@@ -97,7 +97,7 @@ SELECT * FROM
   create_table "finances", force: :cascade do |t|
     t.string   "_type"
     t.date     "date"
-    t.decimal  "amount",           :precision=>15, :scale=>2
+    t.decimal  "amount"
     t.text     "description"
     t.string   "designation"
     t.integer  "donor_id"
