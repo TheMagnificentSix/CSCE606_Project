@@ -103,6 +103,9 @@ class DonorsController < ApplicationController
     def create
       @donor = Donor.create!(params[:donor])
       if(params.has_key?(:contact_date) && params.has_key?(:narrative))
+        cdate=params[:contact_date]
+        fdate=params[:followup_date]
+        narrative=params[:narrative]
         if(cdate!=nil)
           day=cdate[0..1]+"/"
           month=cdate[3..4]+"/"
@@ -115,9 +118,6 @@ class DonorsController < ApplicationController
         year=fdate[6..9]
         fdate=month+day+year
         end
-       cdate=params[:contact_date]
-       fdate=params[:followup_date]
-       narrative=params[:narrative]
        contact_param = {}
        contact_param[:contact_date]=cdate
        contact_param[:followup_date]=fdate
