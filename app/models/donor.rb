@@ -5,8 +5,8 @@ class Donor < ActiveRecord::Base
     :secondary_zipcode, :secondary_home_phone, :secondary_business_phone, :secondary_cell_phone,:created_by, :last_modified_by, :last_modified_at, :active,
     :role, :spouse, :note, :subscribeflag
 
-    has_many :finances
-    has_many :contacts
+    has_many :finances, dependent: :destroy
+    has_many :contacts, dependent: :destroy
 
     #validates_presence_of :first_name, :last_name
 
