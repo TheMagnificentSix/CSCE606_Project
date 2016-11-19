@@ -102,9 +102,8 @@ class DonorsController < ApplicationController
 
     def create
       @donor = Donor.create!(params[:donor])
-      if(params.has_key?(:contact_date) && params.has_key?(:narrative))
+      if(params[:contact_date].present? && params[:narrative].present?)
         cdate=params[:contact_date]
-        fdate=params[:followup_date]
         narrative=params[:narrative]
         if(cdate!=nil)
           day=cdate[0..1]+"/"
@@ -112,21 +111,23 @@ class DonorsController < ApplicationController
           year=cdate[6..9]
           cdate=month+day+year
         end
-        if(fdate!=nil)
-        day=fdate[0..1]+"/"
-        month=fdate[3..4]+"/"
-        year=fdate[6..9]
-        fdate=month+day+year
+        contact_param[:followup_date]=""
+        if(params[:followup_date].present?)
+          fdate=params[:followup_date]
+          day=fdate[0..1]+"/"
+          month=fdate[3..4]+"/"
+          year=fdate[6..9]
+          fdate=month+day+year
+          contact_param[:followup_date]=fdate
         end
-       contact_param = {}
-       contact_param[:contact_date]=cdate
-       contact_param[:followup_date]=fdate
-       contact_param[:narrative]=narrative
-       contact_param[:created_by]=User.find(session[:user_id]).username
-       contact_param[:last_modified_by]=User.find(session[:user_id]).username
-       @contact = @donor.contacts.new contact_param
-       @contact.save!
-     end
+        contact_param = {}
+        contact_param[:contact_date]=cdate
+        contact_param[:narrative]=narrative
+        contact_param[:created_by]=User.find(session[:user_id]).username
+        contact_param[:last_modified_by]=User.find(session[:user_id]).username
+        @contact = @donor.contacts.new contact_param
+        @contact.save!
+      end
       #flash[:notice] = "#{@donor.first_name} #{@donor.last_name} was successfully created."
       if params[:where] == "inplace"
           redirect_to new_donor_path
@@ -154,9 +155,8 @@ class DonorsController < ApplicationController
       end
 
 
-      if(params.has_key?(:contact_date) && params.has_key?(:narrative))
+      if(params[:contact_date].present? && params[:narrative].present?)
         cdate=params[:contact_date]
-        fdate=params[:followup_date]
         narrative=params[:narrative]
         contact_param = {}
         if(cdate!=nil)
@@ -166,13 +166,15 @@ class DonorsController < ApplicationController
           cdate=month+day+year
         end
         contact_param[:contact_date]=cdate
-        if(fdate!=nil)
+        contact_param[:followup_date]=""
+        if(params[:followup_date].present?)
+          fdate=params[:followup_date]
           day=fdate[0..1]+"/"
           month=fdate[3..4]+"/"
           year=fdate[6..9]
           fdate=month+day+year
+          contact_param[:followup_date]=fdate
         end
-        contact_param[:followup_date]=fdate
         contact_param[:narrative]=narrative
         contact_param[:created_by]=User.find(session[:user_id]).username
         contact_param[:last_modified_by]=User.find(session[:user_id]).username

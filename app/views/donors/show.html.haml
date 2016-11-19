@@ -196,14 +196,14 @@
               .row
                 .col-md-3
                   .form-group
-                    %label.control-label contact_date
-                    %input#contact1.form-control{name:"contact_date", type:"text"}
+                    =f.label :contact_date
+                    %input#contact1.form-control{name:"contact_date", type:"text", required:false}
                   .form-group
-                    %label.control-label followup_date
-                    %input#contact2.form-control{name:"followup_date", type:"text"}
+                    =f.label :followup_date
+                    %input#contact2.form-control{name:"followup_date", type:"text", required:false}
                 .col-md-9
-                  %label.control-label narrative
-                  %textarea#contact3.form-control{name:"narrative", rows:"5"}
+                  =f.label :narrative
+                  %textarea#contact3.form-control{name:"narrative", rows:"5", required:false}
         .form-group
           .row
             .col-sm-6
