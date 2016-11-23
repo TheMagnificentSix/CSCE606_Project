@@ -283,7 +283,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   launchy
-  pg
+  pg (~> 0.18.4)
   protected_attributes (~> 1.0.2)
   rails (= 4.2.1)
   rails_12factor
