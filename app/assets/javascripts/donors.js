@@ -21,6 +21,20 @@ var newDonorInfo = {
     $('#newDonorInfo').on('ajax:error',function(event,xhr,status,error){
       $("#basic-submit").notify("Error occurred, please try later...", {className: "error", position:"left middle"});
     });
+
+    $( function() {
+      //var now = new Date();
+    $("#contact1").datepicker({
+      format: "yyyy-mm-dd",
+      //endDate: now,
+      autoclose: true
+    });
+    $("#contact2").datepicker({
+        format: "yyyy-mm-dd",
+        //startDate: now,
+        autoclose: true
+      });
+  });
   }
 }
 
@@ -29,6 +43,20 @@ $(newDonorInfo.setup);
 var donorDataTable = {
   setup: function(){
     // DataTable
+    $( function() {
+      //var now = new Date();
+    $("#contact1").datepicker({
+      format: "yyyy-mm-dd",
+      //endDate: now,
+      autoclose: true
+    });
+    $("#contact2").datepicker({
+        format: "yyyy-mm-dd",
+        //startDate: now,
+        autoclose: true
+      });
+  });
+
     var table = $('#table_donor').DataTable({
       "bStateSave": true,
       aoColumns :[

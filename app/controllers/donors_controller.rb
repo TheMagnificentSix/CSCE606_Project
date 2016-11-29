@@ -103,24 +103,24 @@ class DonorsController < ApplicationController
     def create
       @donor = Donor.create!(params[:donor])
       if(params[:contact_date].present? && params[:narrative].present?)
+        contact_param = {}
         cdate=params[:contact_date]
         narrative=params[:narrative]
-        if(cdate!=nil)
-          day=cdate[0..1]+"/"
-          month=cdate[3..4]+"/"
-          year=cdate[6..9]
-          cdate=month+day+year
-        end
+        #if(cdate!=nil)
+          #day=cdate[0..1]+"/"
+          #month=cdate[3..4]+"/"
+          #year=cdate[6..9]
+          #cdate=month+day+year
+        #end
         contact_param[:followup_date]=""
         if(params[:followup_date].present?)
           fdate=params[:followup_date]
-          day=fdate[0..1]+"/"
-          month=fdate[3..4]+"/"
-          year=fdate[6..9]
-          fdate=month+day+year
+          #day=fdate[0..1]+"/"
+          #month=fdate[3..4]+"/"
+          #year=fdate[6..9]
+          #fdate=month+day+year
           contact_param[:followup_date]=fdate
         end
-        contact_param = {}
         contact_param[:contact_date]=cdate
         contact_param[:narrative]=narrative
         contact_param[:created_by]=User.find(session[:user_id]).username
@@ -159,20 +159,20 @@ class DonorsController < ApplicationController
         cdate=params[:contact_date]
         narrative=params[:narrative]
         contact_param = {}
-        if(cdate!=nil)
-          day=cdate[0..1]+"/"
-          month=cdate[3..4]+"/"
-          year=cdate[6..9]
-          cdate=month+day+year
-        end
+        #if(cdate!=nil)
+        #  day=cdate[0..1]+"/"
+        #  month=cdate[3..4]+"/"
+        #  year=cdate[6..9]
+        #  cdate=month+day+year
+        #end
         contact_param[:contact_date]=cdate
         contact_param[:followup_date]=""
         if(params[:followup_date].present?)
           fdate=params[:followup_date]
-          day=fdate[0..1]+"/"
-          month=fdate[3..4]+"/"
-          year=fdate[6..9]
-          fdate=month+day+year
+          #day=fdate[0..1]+"/"
+          #month=fdate[3..4]+"/"
+          #year=fdate[6..9]
+          #fdate=month+day+year
           contact_param[:followup_date]=fdate
         end
         contact_param[:narrative]=narrative
