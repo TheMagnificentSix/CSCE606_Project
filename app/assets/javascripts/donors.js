@@ -35,9 +35,9 @@ var newDonorInfo = {
       });
     });
 
-    hideshow: function(){
-      $('.dropbtn#d01').on('click',function)
-    }
+    //hideshow: function(){
+    //  $('.dropbtn#d01').on('click',function)
+    //}
   }
 }
 
