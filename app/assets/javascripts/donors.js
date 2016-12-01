@@ -23,18 +23,21 @@ var newDonorInfo = {
     });
 
     $( function() {
-      //var now = new Date();
-    $("#contact1").datepicker({
-      format: "yyyy-mm-dd",
-      //endDate: now,
-      autoclose: true
-    });
-    $("#contact2").datepicker({
+      $("#contact1").datepicker({
+        format: "yyyy-mm-dd",
+        //endDate: now,
+        autoclose: true
+      });
+      $("#contact2").datepicker({
         format: "yyyy-mm-dd",
         //startDate: now,
         autoclose: true
       });
-  });
+    });
+
+    hideshow: function(){
+      $('.dropbtn#d01').on('click',function)
+    }
   }
 }
 
