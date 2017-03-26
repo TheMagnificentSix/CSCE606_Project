@@ -64,7 +64,7 @@ var Filworker = {
 				
 			cells_sel_tab.each(function(){
 			if($("select", $(this)).length == 0)
-				$(this).html("<select id='selectpicker-tab' class='selectpicker'>"+
+				$(this).html("<select id='selectpicker-tab' class='selectpicker' >"+
 							"<option data-hidden='true' value=''>Choose the table name...</option>" +
 	  						"<option value='donor'>Donor</option>"+
 							"<option value='contact'>Contact</option>"+
@@ -75,7 +75,7 @@ var Filworker = {
 				
 			cells_sel_fld.each(function(){
 				if($("select", $(this)).length == 0)
-					$(this).html("<select id='selectpicker-fld' class='selectpicker'>"
+					$(this).html("<select id='selectpicker-fld' class='selectpicker' multiple = 'multiple' data-actions-box='true'>"
 								+"<option class='bs-title-option' value='placeholder'>Choose a Table name first!</option>"
             					+ "</select>"	
 					);
@@ -245,7 +245,7 @@ var Filworker = {
 				
 			cells_sel_fld.each(function(){
 				if($("select", $(this)).length == 0)
-					$(this).html("<select id='selectpicker-fld' class='selectpicker'>"
+					$(this).html("<select id='selectpicker-fld' class='selectpicker' multiple = 'multiple' data-actions-box='true'>"
 					+ "<option data-hidden='true' value=''>Choose the field name...</option>"
                     + "</select>"	
 				);
@@ -436,7 +436,7 @@ var Filworker = {
 		    
 		    }
 		    
-	   var field1 = Filworker.original[1].trim().toLowerCase().split(' ').join('_');
+	    var field1 = Filworker.original[1].trim().toLowerCase().split(' ').join('_');
 		$("select",b).selectpicker('val', field1); 
 		
 		var min_date1 = Filworker.original[5].trim();
@@ -462,56 +462,64 @@ var Filworker = {
 	saveData: function(){
 		if($("#add").hasClass("adding") || $("#edit").hasClass("editing")){
 			if(Filworker.selected.length){
-			var attr = [];
-			var cells_sel_tab = $("td", Filworker.selected).slice(0, 1);
-			cells_sel_tab.each(function(){
-				attr.push($("select", $(this)).val());
-			});
-		
+
 			var cells_sel_fld = $("td", Filworker.selected).slice(1, 2);
-			cells_sel_fld.each(function(){
-				var fld=$("select", $(this)).val();
-				attr.push(fld);
-			});
-		
-			var cells_inp = $("td", Filworker.selected).slice(2, 5);
-			cells_inp.each(function(){
-				attr.push($("input", $(this)).val());
-			});
-		
-			var cells_date = $("td", Filworker.selected).slice(5, 7);
-			cells_date.each(function(){
-				attr.push($("input", $(this)).val());
-			});
-		
-			if(attr[0] == ""){ 
-				$("#add").notify("Please select the Table.", {gap: 290, arrowShow: false, className: "error", position:"left middle"});
-				return false;
-			}
-			if(attr[1] == ""){ 
-				$("#back").notify("Please select the Field.", {gap: 290, arrowShow: false, className: "error", position:"left middle"});
-				return false;
-			}
-			if(Filworker.selected.data("id"))
-				$.ajax({
-					type: "PUT",
-					url: "/filters/" + Filworker.selected.data("id"),
-					data: {"attr": attr},
-			  	success: function(data, requestStatus, xhrObject){ Filworker.saveRow(data); },
-			    error: function(xhrObj, textStatus, exception) {
-					$("#add").notify("Failed to save data!", {arrowShow: false, className: "error", position:"left middle"});
-			  }
-			})
-			else
-				$.ajax({
-					type: "POST",
-					url: "/filters/",
-					data: {"attr": attr, "id": $("#ReportId").text()},
-			    success: function(data, requestStatus, xhrObject){ Filworker.saveRow(data); },
-			    error: function(xhrObj, textStatus, exception) {
-					$("#add").notify("Failed to add data!", {arrowShow: false, className: "error", position:"left middle"});
-			  }
-			})
+				cells_sel_fld.each(function(){
+					var fld=$("select", $(this)).val();
+
+					var arrayLength = fld.length;
+					for (var i = 0; i < arrayLength; i++) {
+						var attr = [];
+						var cells_sel_tab = $("td", Filworker.selected).slice(0, 1);
+						cells_sel_tab.each(function(){
+							attr.push($("select", $(this)).val());
+						});
+					
+						attr.push(fld[i]);
+					
+						var cells_inp = $("td", Filworker.selected).slice(2, 5);
+						cells_inp.each(function(){
+							attr.push($("input", $(this)).val());
+						});
+					
+						var cells_date = $("td", Filworker.selected).slice(5, 7);
+						cells_date.each(function(){
+							attr.push($("input", $(this)).val());
+						});
+					
+						if(attr[0] == ""){ 
+							$("#add").notify("Please select the Table.", {gap: 290, arrowShow: false, className: "error", position:"left middle"});
+							return false;
+						}
+						if(attr[1] == ""){ 
+							$("#back").notify("Please select the Field.", {gap: 290, arrowShow: false, className: "error", position:"left middle"});
+							return false;
+						}
+						if(Filworker.selected.data("id"))
+							$.ajax({
+								type: "PUT",
+								url: "/filters/" + Filworker.selected.data("id"),
+								data: {"attr": attr},
+						  	success: function(data, requestStatus, xhrObject){ Filworker.saveRow(data); },
+						    error: function(xhrObj, textStatus, exception) {
+								$("#add").notify("Failed to save data!", {arrowShow: false, className: "error", position:"left middle"});
+						  }
+						})
+						else
+							$.ajax({
+								type: "POST",
+								url: "/filters/",
+								data: {"attr": attr, "id": $("#ReportId").text()},
+						    success: function(data, requestStatus, xhrObject){ Filworker.saveRow(data); },
+						    error: function(xhrObj, textStatus, exception) {
+								$("#add").notify("Failed to add data!", {arrowShow: false, className: "error", position:"left middle"});
+						  }
+						})
+					}
+
+					
+				});
+
 		}
 		}
 	},
@@ -531,11 +539,11 @@ var Filworker = {
 	
 	Filworker.selected.removeClass("selected");
 
-  //reset button
+    //reset button
 	Filworker.reBtn();
 	
 	$("#add").notify("Successfully saved!", {arrowShow: false, className: "success", position:"left middle"});
-	
+	location.reload();
 },
 
 	
