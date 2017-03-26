@@ -58,6 +58,8 @@ class ReportsController < ApplicationController
     def new
       @report = Report.new
     end
+    def exceptionReport
+    end
 
 #<<<<<<< HEAD
  #   def exception

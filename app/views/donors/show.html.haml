@@ -51,9 +51,15 @@
   });
 
 =render :partial=>'layouts/banner'
+
+= form_tag donors_path, method: 'get' do
+  = label_tag :search
+  = search_field_tag :search
+  = submit_tag 'Submit'
 #page-title.container-fluid.titleLine
   %h2 Donor Information
   %label#activeLabel.hidden=@active
+  
 %ul#tabs.nav.nav-tabs.nav-justified.bold{:role=>'tablist'}
   %li.active
     %a{:id=>'summary-tab',:href=>'#summary', :data=>{:toggle=>'tab'}, :aria=>{:controls=>'summary'}} Summary

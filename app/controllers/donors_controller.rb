@@ -8,7 +8,9 @@ class DonorsController < ApplicationController
     def index
         @donor_attr = Donor.attribute_names
         @donor_attr_show = ["flag", "title", "first_name", "last_name", "organization", "company"]
-        @donors = Donor.search_by(params[:donor]).where('active = 1')
+        @donors = Donor.search_by(params[:donor]).where("active = 1")
+        @donors = @donors.where(["first_name LIKE ? or last_name LIKE ? or organization LIKE ? or company LIKE ? or title LIKE ?", "%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%"])
+       
     end
 
     def new

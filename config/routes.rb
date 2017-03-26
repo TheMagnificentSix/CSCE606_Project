@@ -31,5 +31,7 @@ Rails.application.routes.draw do
   resources :agendas
   resources :reports
   resources :filters
+  resources :exception
+  resources :searches
 
 end
