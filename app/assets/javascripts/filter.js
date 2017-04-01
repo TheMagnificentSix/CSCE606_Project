@@ -4,6 +4,7 @@ $(document).ready(function() {
 		}
 		else {
     	Filworker.table = $('#filter_tab').DataTable( {
+    	"pageLength": 100,
         "ordering": false,
         "drawCallback": function( settings ) {
         //topRow();
@@ -79,7 +80,7 @@ var Filworker = {
 								+"<option class='bs-title-option' value='placeholder'>Choose a Table name first!</option>"
             					+ "</select>"	
 					);
-				});
+			});
 				
 			cells_inp.each(function(){
 				if($("input", $(this)).length == 0)
@@ -163,7 +164,7 @@ var Filworker = {
 		        $('.selectpicker#selectpicker-fld').selectpicker('toggle');
 		        $('.selectpicker#selectpicker-fld')
 							.html("<option data-hidden='true' value=''>Choose the field name...</option>" 
-								+'<option value="_type">Type</option>'
+								+'<option value="type">Type</option>'
 						        +'<option value="date">Date</option>'
 						        +'<option value="amount">Amount</option>'
 						        +'<option value="description">Description</option>'
@@ -205,6 +206,7 @@ var Filworker = {
 		$("#delete").show();
 		$("#cancel").hide();
 		$("#save").hide();
+		location.reload();
 	},
 	
 	editRow: function(){
@@ -245,7 +247,7 @@ var Filworker = {
 				
 			cells_sel_fld.each(function(){
 				if($("select", $(this)).length == 0)
-					$(this).html("<select id='selectpicker-fld' class='selectpicker' multiple = 'multiple' data-actions-box='true'>"
+					$(this).html("<select id='selectpicker-fld' class='selectpicker'>"
 					+ "<option data-hidden='true' value=''>Choose the field name...</option>"
                     + "</select>"	
 				);
@@ -467,6 +469,10 @@ var Filworker = {
 				cells_sel_fld.each(function(){
 					var fld=$("select", $(this)).val();
 
+					if (fld instanceof Array == false) {
+						fld = [fld]
+					}
+
 					var arrayLength = fld.length;
 					for (var i = 0; i < arrayLength; i++) {
 						var attr = [];
@@ -543,7 +549,6 @@ var Filworker = {
 	Filworker.reBtn();
 	
 	$("#add").notify("Successfully saved!", {arrowShow: false, className: "success", position:"left middle"});
-	location.reload();
 },
 
 	
