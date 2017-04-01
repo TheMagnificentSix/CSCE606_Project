@@ -5,5 +5,3 @@ end
 Then /^the "([^"]*)" field should be "([^"]*)"$/ do |field, value|
     field_labeled(field).value.should =~ /#{value}/
 end
-
-    

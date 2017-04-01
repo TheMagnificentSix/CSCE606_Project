@@ -19,11 +19,3 @@ Scenario: navigate from reports page to new report page
   When I follow "Add New Template"
   Then I should be on the new report page
 
-Scenario: add new report
-  Given I am on the new report page
-  When I fill in the following:
-    | title | 2015 annual finance report |
-    | description   | This is 2015 annual finance report    |
-  And I submit with "Save Info"
-  Then I should be on edit report page 1
-  And I should see "2015 annual finance report was successfully created."
