@@ -19,7 +19,7 @@ var newDonorInfo = {
       $("#basic-submit").notify("Successfully saved", {className: "success", position:"left middle"});
     });
     $('#newDonorInfo').on('ajax:error',function(event,xhr,status,error){
-      $("#basic-submit").notify("Error occurred, please try later...", {className: "error", position:"left middle"});
+      $("#basic-submit").notify("All * fields should be completed", {className: "error", position:"left middle"});
     });
 
     $( function() {
