@@ -21,7 +21,7 @@ var newDonorInfo = {
     $('#newDonorInfo').on('ajax:error',function(event,xhr,status,error){
    //   $("#basic-submit").notify("All * fields should be completed", {className: "error", position:"left middle"});
   //  $(this).append(xhr.responseText);
-    var response=xhr.responseText.substring(xhr.responseText.indexOf("Validation"),xhr.responseText.indexOf("<"))
+    var response=xhr.responseText.substring(xhr.responseText.indexOf("V"),xhr.responseText.indexOf("<"))
   //  document.getElementById("Validation failed").innerHTML = response;
     alert('Error in: ' + response );
     });
