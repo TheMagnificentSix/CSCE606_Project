@@ -19,9 +19,13 @@ var newDonorInfo = {
       $("#basic-submit").notify("Successfully saved", {className: "success", position:"left middle"});
     });
     $('#newDonorInfo').on('ajax:error',function(event,xhr,status,error){
-      $("#basic-submit").notify("All * fields should be completed", {className: "error", position:"left middle"});
+   //   $("#basic-submit").notify("All * fields should be completed", {className: "error", position:"left middle"});
+  //  $(this).append(xhr.responseText);
+    var response=xhr.responseText.substring(xhr.responseText.indexOf("Validation"),xhr.responseText.indexOf("<"))
+  //  document.getElementById("Validation failed").innerHTML = response;
+    alert('Error in: ' + response );
     });
-
+  
     $( function() {
       $("#contact1").datepicker({
         format: "yyyy-mm-dd",
