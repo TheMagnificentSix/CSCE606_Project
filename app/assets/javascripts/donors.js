@@ -23,7 +23,7 @@ var newDonorInfo = {
    // $(this).append(xhr.responseText);
   //  var response=this.responseText
   //  document.getElementById("Validation failed").innerHTML = response;
-    alert('Possible Error: Missing * Fields ');
+    alert(xhr.status);
     });
   
     $( function() {
