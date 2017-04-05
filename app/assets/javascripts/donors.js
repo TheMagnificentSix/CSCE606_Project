@@ -23,10 +23,11 @@ var newDonorInfo = {
    // $(this).append(xhr.responseText);
   //  var response=this.responseText
   //  document.getElementById("Validation failed").innerHTML = response;
-   var responseJSON = JSON.parse(xhr.responseText);
-    $scope.d.errors = responseJSON;
-    alert($scope.d.errors);
-    });
+    if(xhr.status==422){
+    alert(xhr.statusText + '  : Missing * fields');}
+    else{
+    alert(xhr.status +  xhr.statusText);
+    }});
   
     $( function() {
       $("#contact1").datepicker({
