@@ -20,10 +20,10 @@ var newDonorInfo = {
     });
     $('#newDonorInfo').on('ajax:error',function(event,xhr,status,error){
    //   $("#basic-submit").notify("All * fields should be completed", {className: "error", position:"left middle"});
-  //  $(this).append(xhr.responseText);
-    var response=xhr.responseText
+    $(this).append(xhr.responseText);
+  //  var response=this.responseText
   //  document.getElementById("Validation failed").innerHTML = response;
-    alert('Error in: ' + response );
+    //alert('Error in: ' + response );
     });
   
     $( function() {
