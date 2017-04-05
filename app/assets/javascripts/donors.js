@@ -23,7 +23,9 @@ var newDonorInfo = {
    // $(this).append(xhr.responseText);
   //  var response=this.responseText
   //  document.getElementById("Validation failed").innerHTML = response;
-    alert(xhr.status);
+   var responseJSON = JSON.parse(xhr.responseText);
+    $scope.d.errors = responseJSON;
+    alert($scope.d.errors);
     });
   
     $( function() {
