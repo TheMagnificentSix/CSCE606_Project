@@ -24,6 +24,7 @@ var newDonorInfo = {
   //  var response=this.responseText
   //  document.getElementById("Validation failed").innerHTML = response;
     if(xhr.status==422){
+     
     alert(xhr.statusText + '  : Missing * fields');}
     else{
     alert(xhr.status +  xhr.statusText);

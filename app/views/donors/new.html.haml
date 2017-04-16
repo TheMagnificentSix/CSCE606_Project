@@ -77,7 +77,7 @@
         .form-container#s03
           .row
             .col-sm-3
-              Contactor
+              Main Contact
         .form-container.show
           .row
             .col-sm-3
@@ -94,11 +94,11 @@
         .form-container#f01
           .row
             .col-sm-2.5
-              =f.label :company
-              =f.text_field :company, class:'form-control', id:'company'
-            .col-sm-2.5
               =f.label :role
               =f.text_field :role, class:'form-control', id:'role'#, :required=>true
+            .col-sm-2.5
+              =f.label :company
+              =f.text_field :company, class:'form-control', id:'company'
             .col-sm-2.5
               =f.label :title
               =f.text_field :title, class:'form-control', id:'title'
@@ -113,21 +113,21 @@
         .form-container.show
           .row
             .col-sm-3
-              =f.label :business_phone
-              =f.text_field :business_phone, class:'form-control', id:'business_phone'
-            .col-sm-3
-              =f.label :cell_phone
+              =f.label :cell_phone,"Primary Phone"
               =f.text_field :cell_phone, class:'form-control', id:'cell_phone'
             .col-sm-3
-              =f.label :home_phone
+              =f.label :business_phone,"Secondary Phone"
+              =f.text_field :business_phone, class:'form-control', id:'business_phone'
+            .col-sm-3
+              =f.label :home_phone,"Other Phone"
               =f.text_field :home_phone, class:'form-control', id:'home_phone'
           .row
             .col-sm-3
               =f.label :email
               =f.text_field :email, class:'form-control', id:'email'
             .col-sm-1
-              =f.label :zipcode
-              =f.text_field :zipcode, class:'form-control', id:'zipcode'
+              =f.label :country
+              =f.text_field :country, class:'form-control', id:'country'
           .row
             .col-sm-3
               =f.label :street_address
@@ -139,28 +139,28 @@
               =f.label :state
               =f.text_field :state, class:'form-control', id:'state'
             .col-sm-2
-              =f.label :country
-              =f.text_field :country, class:'form-control', id:'country'
+              =f.label :zipcode
+              =f.text_field :zipcode, class:'form-control', id:'zipcode'
         .brow
           %button.dropbtn#d03{:onclick => "hideshow()", :type => "button"} Secondary Information
         .form-container#f03
           .row
             .col-sm-3
-              =f.label :business_phone
-              =f.text_field :secondary_business_phone, class:'form-control', id:'business_phone_2'
+              =f.label :cell_phone,"Primary Phone"
+              =f.text_field :cell_phone, class:'form-control', id:'cell_phone_2'
             .col-sm-3
-              =f.label :cell_phone
-              =f.text_field :secondary_cell_phone, class:'form-control', id:'cell_phone_2'
+              =f.label :business_phone,"Secondary Phone"
+              =f.text_field :business_phone, class:'form-control', id:'business_phone_2'
             .col-sm-3
-              =f.label :home_phone
-              =f.text_field :secondary_home_phone, class:'form-control', id:'home_phone_2'
+              =f.label :home_phone,"Other Phone"
+              =f.text_field :home_phone, class:'form-control', id:'home_phone_2'
           .row
             .col-sm-3
               =f.label :email
               =f.text_field :secondary_email, class:'form-control', id:'email_2'
             .col-sm-1
-              =f.label :zipcode
-              =f.text_field :secondary_zipcode, class:'form-control', id:'zipcode_2'
+              =f.label :country
+              =f.text_field :secondary_country, class:'form-control', id:'country_2'
           .row
             .col-sm-3
               =f.label :street_address
@@ -172,8 +172,8 @@
               =f.label :state
               =f.text_field :secondary_state, class:'form-control', id:'state_2'
             .col-sm-2
-              =f.label :country
-              =f.text_field :secondary_country, class:'form-control', id:'country_2'
+              =f.label :zipcode
+              =f.text_field :secondary_zipcode, class:'form-control', id:'zipcode_2'
         .brow
           %button.dropbtn#d02{:type => "button"} Contact History
         = form_tag :action => :create,:id => 'contactf' do
