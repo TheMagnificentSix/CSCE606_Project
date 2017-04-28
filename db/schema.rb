@@ -122,7 +122,7 @@ SELECT * FROM
   create_table "finances", force: :cascade do |t|
     t.string   "_type"
     t.date     "date"
-    t.decimal  "amount",           :precision=>15, :scale=>2,:default=>0
+    t.decimal  "amount",           :precision=>15, :scale=>2
     t.text     "description"
     t.string   "designation"
     t.integer  "donor_id"

@@ -57,7 +57,7 @@ class FinancesController < ApplicationController
         @finance = Finance.find(params[:id])
         a = params[:attr]
         if(a[2].is_a?String)
-            a[2]=(a[2][1..-1]).to_f
+            a[2]=(a[2][0..-1]).to_f
         end
         @finance.update_attributes!({
             :_type => a[0],
