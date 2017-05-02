@@ -9,8 +9,15 @@ class Donor < ActiveRecord::Base
     has_many :contacts, dependent: :destroy
 
     
-    validates_presence_of :first_name, :last_name
+ #   validates_presence_of :first_name, :last_name
 
+
+
+  def self.import(file)
+    CSV.foreach(file.path, encoding: "bom|utf-8", headers: :first_row,header_converters: :symbol, converters: :all) do |row|
+       Donor.create! row.to_hash 
+    end
+  end
     def self.search_by inputs
         if inputs != nil
            inputs.delete_if {|key, value| value.empty? }

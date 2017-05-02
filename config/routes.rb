@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  resources :donors do
+    collection {post :import}
+  end
   # You can have the root of your site routed with "root"
   root :to=>'sessions#new'
 
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
 #>>>>>>> 8e771d383865f4230c1fbf7e88b179d1f6558681
   resources :users
   resources :accesses
-  resources :donors
+ 
   resources :reports
   resources :contacts
   resources :finances

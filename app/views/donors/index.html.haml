@@ -15,3 +15,7 @@
       .modal-body
       .modal-footer
         %button.btn.btn-default{:type=>'button',:data => {:dismiss => 'modal'}} Close
+%h3 Import Donors
+= form_tag import_donors_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Upload Donors"
