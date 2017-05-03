@@ -86,8 +86,8 @@ class Report < ActiveRecord::Base
           elsif tables.include? 'finance'
             if !select_statement.empty?
               select_statement = select_statement[0...select_statement.rindex(',')]
-              #records = Donor.joins(:finances).select(select_statement)
-              records=Donor.joins('LEFT OUTER JOIN "finances" ON "finances"."donor_id"="donors"."id"').select(select_statement)
+              records = Donor.joins(:finances).select(select_statement)
+              #records=Donor.joins('LEFT OUTER JOIN "finances" ON "finances"."donor_id"="donors"."id"').select(select_statement)
             else
               records = nil
             end
