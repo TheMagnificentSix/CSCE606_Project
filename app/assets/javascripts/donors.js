@@ -69,7 +69,7 @@ var donorDataTable = {
   });
 
     var table = $('#table_donor').DataTable({
-      "bStateSave": true,
+//    "bStateSave": true,
       aoColumns :[
           { "sTitle": "Action","bSortable": false },
           { "sTitle": "Flag","bSortable": false, },

@@ -12,12 +12,10 @@ class DonorsController < ApplicationController
         search= params[:search]
         if search !=nil 
           search = search.downcase
-          @donors = @donors.where(["lower(first_name) LIKE ? or lower(last_name) LIKE ? or lower(organization) LIKE ? or lower(company) LIKE ? or lower(title) LIKE ?", search,search,search,search,search])
+          @donors = @donors.where(["lower(first_name) LIKE ? or lower(last_name) LIKE ? or lower(organization) LIKE ? or lower(company) LIKE ? or lower(title) LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%"])
         else
           @donors
-        end 
-        
-        
+        end
     end
 
     def new
