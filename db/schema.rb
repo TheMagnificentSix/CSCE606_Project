@@ -120,7 +120,7 @@ SELECT * FROM
   add_index "filters", ["report_id"], :name=>"index_filters_on_report_id"
 
   create_table "finances", force: :cascade do |t|
-    t.string   "_type"
+    t.string   "type"
     t.date     "date"
     t.decimal  "amount",           :precision=>15, :scale=>2
     t.text     "description"
