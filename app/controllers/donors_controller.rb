@@ -8,11 +8,15 @@ class DonorsController < ApplicationController
     def index
         @donor_attr = Donor.attribute_names
         @donor_attr_show = ["flag", "title", "first_name", "last_name", "organization", "company"]
-        @donors = Donor.search_by(params[:donor]).where("active = 1")
-        search= params[:search]
-        if search !=nil 
+        @donors = Donor.search_by(params[:donor])
+        searched= params[:search]
+        
+        if searched !=nil
+          searchs = searched.gsub(/\s+/m, ' ').strip.split(" ");
+          searchs.each do |search|
           search = search.downcase
-          @donors = @donors.where(["lower(first_name) LIKE ? or lower(last_name) LIKE ? or lower(organization) LIKE ? or lower(company) LIKE ? or lower(title) LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%"])
+            @donors = @donors.where(["lower(first_name) LIKE ? or lower(last_name) LIKE ? or lower(organization) LIKE ? or lower(company) LIKE ? or lower(title) LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%"])
+          end 
         else
           @donors
         end
