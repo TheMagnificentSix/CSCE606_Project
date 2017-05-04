@@ -337,7 +337,7 @@ var Filworker = {
 		        $('.selectpicker#selectpicker-fld').selectpicker('toggle');
 		        $('.selectpicker#selectpicker-fld')
 					.html("<option data-hidden='true' value=''>Choose the field name...</option>" 
-						+'<option value="_type">Type</option>'
+						+'<option value="type">Type</option>'
 					    +'<option value="date">Date</option>'
 					    +'<option value="amount">Amount</option>'
 					    +'<option value="description">Description</option>'
@@ -421,7 +421,7 @@ var Filworker = {
 		        $('.selectpicker#selectpicker-fld').selectpicker('toggle');
 		        $('.selectpicker#selectpicker-fld')
 					.html("<option data-hidden='true' value=''>Choose the field name...</option>" 
-						+'<option value="_type">Type</option>'
+						+'<option value="type">Type</option>'
 						+'<option value="date">Date</option>'
 						+'<option value="amount">Amount</option>'
 						+'<option value="description">Description</option>'
