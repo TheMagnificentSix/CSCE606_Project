@@ -53,7 +53,7 @@
 =render :partial=>'layouts/banner'
 
 = form_tag donors_path, method: 'get' do
-  = label_tag :search
+  = label_tag 'NEW search'
   = search_field_tag :search
   = submit_tag 'Submit'
 #page-title.container-fluid.titleLine
