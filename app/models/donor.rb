@@ -2,7 +2,7 @@ class Donor < ActiveRecord::Base
     attr_accessible :flag, :first_name, :last_name, :title, :middle_name, :salution,
     :email, :organization, :company, :street_address, :street_address_2,:city, :state, :country,
     :zipcode, :home_phone, :business_phone, :cell_phone, :secondary_street_address, :secondary_street_address_2,:secondary_city, :secondary_state, :secondary_country,
-    :secondary_zipcode, :secondary_home_phone, :secondary_business_phone, :secondary_cell_phone,:created_by, :last_modified_by, :last_modified_at, :active,
+    :secondary_zipcode, :secondary_home_phone, :secondary_business_phone, :secondary_email,:secondary_cell_phone,:created_by, :last_modified_by, :last_modified_at, :active,
     :role, :spouse, :note, :subscribeflag
 
     has_many :finances, dependent: :destroy
